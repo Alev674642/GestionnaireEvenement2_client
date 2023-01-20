@@ -7,7 +7,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import FiltreSorties from "./FiltreSorties";
 import { URL_SERVER } from "../utils/Utils";
 import CircularProgress from "../utils/CircularProgress";
-import Isortie from "../types/ISortie";
+import Isortie from "../types/Isortie";
 
 export default function ListeSorties() {
   const [sorties, setSorties] = useState<Isortie[]>([]);

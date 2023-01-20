@@ -5,7 +5,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import dateFormat from "dateformat";
 import useWindowDimensions from "../utils/useWindowDimensions";
-import Isortie from "../types/ISortie";
+import Isortie from "../types/Isortie";
 
 export const categorieToIcon = (categorie: string) => {
   switch (categorie) {

@@ -1,5 +1,5 @@
-export default interface IFiltres{
-    ville: string,
-    prixMax: number,
-    categorie: string,
+export default interface Ifiltres {
+  ville: string;
+  prixMax: number;
+  categorie: string;
 }

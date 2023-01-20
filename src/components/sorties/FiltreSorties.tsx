@@ -1,8 +1,8 @@
-import IFiltres from "../types/Ifiltres";
+import Ifiltres from "../types/Ifiltres";
 
 interface Props {
-  filtres: IFiltres;
-  setFiltres: (arg: IFiltres) => void;
+  filtres: Ifiltres;
+  setFiltres: (arg: Ifiltres) => void;
 }
 
 export default function FiltreSorties({ filtres, setFiltres }: Props) {

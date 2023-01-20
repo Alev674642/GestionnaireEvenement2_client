@@ -9,7 +9,7 @@ import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import FormikDatePicker from "./FormikDatePicker";
 import { URL_SERVER } from "../utils/Utils";
-import Isortie from "../types/ISortie";
+import Isortie from "../types/Isortie";
 
 interface IformValues {
   name: string;

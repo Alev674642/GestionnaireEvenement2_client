@@ -6,7 +6,7 @@ import { sortieContext } from "./SortieProvider";
 import { categorieToIcon } from "./TableSorties";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import dateFormat from "dateformat";
-import Isortie from "../types/ISortie";
+import Isortie from "../types/Isortie";
 
 export default function VisionneuseEvenements() {
   const [sorties, setSorties] = useState([]);
@@ -31,7 +31,7 @@ export default function VisionneuseEvenements() {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data);
-        data.sort((a:Isortie, b:Isortie) => {
+        data.sort((a: Isortie, b: Isortie) => {
           return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
         });
 
@@ -58,7 +58,7 @@ export default function VisionneuseEvenements() {
     return () => clearInterval(slider);
   }, [index, sorties.length]);
 
-  const setArticleClass = (indexArticle:number) => {
+  const setArticleClass = (indexArticle: number) => {
     if (index === 0 && indexArticle === sorties.length - 1)
       return "card my-5 col-6 visionneuseCard lastSlide";
     else if (index === sorties.length - 1 && indexArticle === 0)
@@ -73,38 +73,41 @@ export default function VisionneuseEvenements() {
   if (loading) {
     return (
       <div
-        className='bg-light d-flex  justify-content-center align-items-center'
-        style={{ minHeight: "80vh" }}>
-        <CircularProgress className='my-5' />
+        className="bg-light d-flex  justify-content-center align-items-center"
+        style={{ minHeight: "80vh" }}
+      >
+        <CircularProgress className="my-5" />
       </div>
     );
   } else {
     return (
-      <div className='mx-auto d-flex flex-column align-items-center'>
-        <h1 className='mt-5 mb-2'> Visionneuse évènements</h1>
+      <div className="mx-auto d-flex flex-column align-items-center">
+        <h1 className="mt-5 mb-2"> Visionneuse évènements</h1>
 
-        <div className='section-center '>
+        <div className="section-center ">
           <button
-            className='prev fs-1'
+            className="prev fs-1"
             onClick={() => {
               console.log(index);
               setIndex(index <= 0 ? sorties.length - 1 : index - 1);
-            }}>
+            }}
+          >
             <FiChevronLeft />
           </button>
-          {sorties.map((sortie : Isortie, sortieIndex) => {
+          {sorties.map((sortie: Isortie, sortieIndex) => {
             return (
               <div
                 key={sortie._id}
                 className={setArticleClass(sortieIndex)}
-                style={{ maxWidth: "80%" }}>
-                <h5 className='card-header'>
+                style={{ maxWidth: "80%" }}
+              >
+                <h5 className="card-header">
                   <h1 style={{ display: "inline-block", fontSize: "normal" }}>
                     {sortie.name}
-                    <span className='ms-4'>
+                    <span className="ms-4">
                       {categorieToIcon(sortie.categorie)}
                     </span>
-                    <p className='mt-3 mb-0 fs-3'>
+                    <p className="mt-3 mb-0 fs-3">
                       {dateFormat(sortie.date, "dd/mm/yyyy HH:MM")}
                     </p>
                   </h1>
@@ -112,30 +115,31 @@ export default function VisionneuseEvenements() {
                 <div style={{ padding: "auto" }}>
                   <img
                     src={sortie.imageUrl}
-                    className='card-img-top mx-auto my-auto imageCard'
+                    className="card-img-top mx-auto my-auto imageCard"
                     alt={sortie.name}
                   />
                 </div>
-                <div className='card-body'>
-                  <p className='card-text fs-4'>{sortie.description}</p>
-                  <p className='card-text fs-4 fw-bold'>
+                <div className="card-body">
+                  <p className="card-text fs-4">{sortie.description}</p>
+                  <p className="card-text fs-4 fw-bold">
                     {sortie.price > 0 ? `${sortie.price} €` : "Gratuit"}
                   </p>
-                  <p className='card-text fs-5 fw-light text-primary fst-italic'>
+                  <p className="card-text fs-5 fw-light text-primary fst-italic">
                     - Evènement créé par {sortie.userPseudo} -
                   </p>
                 </div>
-                <div className='card-footer text-muted fs-3'>
+                <div className="card-footer text-muted fs-3">
                   {sortie.lieu} {sortie.lieu2}
                 </div>
               </div>
             );
           })}
           <button
-            className='next fs-1 ms-5'
+            className="next fs-1 ms-5"
             onClick={() => {
               setIndex(index >= sorties.length - 1 ? 0 : index + 1);
-            }}>
+            }}
+          >
             <FiChevronRight />
           </button>
         </div>
