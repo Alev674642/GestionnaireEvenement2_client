@@ -8,7 +8,7 @@ import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import { URL_SERVER } from "../utils/Utils";
 import Isortie from "../types/ISortie";
 
-export default function SortieCard({ sortie }:{sortie : Isortie}) {
+export default function SortieCard({ sortie }: { sortie: Isortie }) {
   const [message, setMessage] = useState("");
 
   let auth = useContext(AuthContext);
@@ -41,7 +41,7 @@ export default function SortieCard({ sortie }:{sortie : Isortie}) {
     }
   };
 
-  const handleSignalee = async (idSortie : string) => {
+  const handleSignalee = async (idSortie: string) => {
     try {
       const url = URL_SERVER + "/api/sortie/" + idSortie;
 
@@ -80,64 +80,69 @@ export default function SortieCard({ sortie }:{sortie : Isortie}) {
   };
 
   return (
-    <div className=' col align-self-center mb-5'>
-      <div className='card mx-auto my-1 w-80 border-secondary'>
+    <div className=" col align-self-center mb-5 ">
+      <div className="card mx-auto my-1 w-80 border-secondary sortie-card-style">
         <img
           src={sortie.imageUrl ? sortie.imageUrl : ""}
-          alt='Evènement'
-          className='card-img-top'></img>
+          alt="Evènement"
+          className="card-img-top"
+        ></img>
 
-        <div className='card-body py-5'>
-          <h5 className='card-title pb-3 fs-1'>{sortie.name}</h5>
-          <h5 className='card-title pb-3 fs-3 text-success'>
+        <div className="card-body py-5">
+          <h5 className="card-title pb-3 fs-1">{sortie.name}</h5>
+          <h5 className="card-title pb-3 fs-3 text-success">
             {sortie.lieu} {sortie.lieu2}
           </h5>
-          <h6 className='card-subtitle mb-2 text-muted fs-3'>
+          <h6 className="card-subtitle mb-2 text-muted fs-3">
             {dateFormat(sortie.date, "dd/mm/yyyy HH:MM")}
           </h6>
-          <p className='card-text fs-4'>{sortie.description}</p>
-          <p className='card-text fs-4 fw-bold'>
+          <p className="card-text fs-4">{sortie.description}</p>
+          <p className="card-text fs-4 fw-bold">
             {sortie.price > 0 ? `${sortie.price} €` : "Gratuit"}
           </p>
-          <p className='card-text fs-6 fw-light text-primary fst-italic'>
+          <p className="card-text fs-6 fw-light text-primary fst-italic">
             - Evènement créé par {sortie.userPseudo} -
           </p>
 
           <OverlayTrigger
-            placement='top'
+            placement="top"
             delay={{ show: 250, hide: 400 }}
             overlay={
               <Tooltip id={`tooltip-right`}>
                 Cliquez pour modifier cet évènement. Cette action est possible
                 uniquement si vous êtes le créateur de la sortie.
               </Tooltip>
-            }>
-            <span className='d-inline-block'>
+            }
+          >
+            <span className="d-inline-block">
               <Link
                 className={`btn btn-outline-primary btn-sm mx-1 ${
                   auth.user === sortie.userId ? "" : "disabled"
                 }`}
-                to={`/formulairesortie/${sortie._id}`}>
+                to={`/formulairesortie/${sortie._id}`}
+              >
                 Modifier
               </Link>
             </span>
           </OverlayTrigger>
 
           <OverlayTrigger
-            placement='top'
+            placement="top"
             delay={{ show: 250, hide: 400 }}
             overlay={
               <Tooltip id={`tooltip-right`}>
                 Cliquez pour supprimer cet évènement. Cette action est possible
                 uniquement si vous êtes le créateur de la sortie.
               </Tooltip>
-            }>
-            <span className='d-inline-block'>
+            }
+          >
+            <span className="d-inline-block">
               <button
                 className={`btn btn-outline-primary btn-sm mx-1 ${
                   auth.user === sortie.userId ? "" : "disabled"
                 }`}
-                onClick={() => handleDelete(sortie._id)}>
+                onClick={() => handleDelete(sortie._id)}
+              >
                 Supprimer
               </button>
             </span>
@@ -145,17 +150,19 @@ export default function SortieCard({ sortie }:{sortie : Isortie}) {
 
           {auth.user !== sortie.userId && (
             <OverlayTrigger
-              placement='top'
+              placement="top"
               delay={{ show: 250, hide: 400 }}
               overlay={
                 <Tooltip id={`tooltip-right`}>
                   Cliquez pour signaler cet évènement. Il sera verrouillé
                   jusqu'à être contrôlé par un administrateur.
                 </Tooltip>
-              }>
+              }
+            >
               <button
-                className='btn btn-outline-primary btn-sm mx-1'
-                onClick={() => handleSignalee(sortie._id)}>
+                className="btn btn-outline-primary btn-sm mx-1"
+                onClick={() => handleSignalee(sortie._id)}
+              >
                 Signaler ❌
               </button>
             </OverlayTrigger>
@@ -163,7 +170,7 @@ export default function SortieCard({ sortie }:{sortie : Isortie}) {
           <div>
             <SimpleMap lieu={sortie.lieu}></SimpleMap>
           </div>
-          <h4 className='mt-3'>{message}</h4>
+          <h4 className="mt-3">{message}</h4>
         </div>
       </div>
     </div>

@@ -1,17 +1,17 @@
-
-export default function SimpleMap({ lieu }:{lieu:string}) {
+export default function SimpleMap({ lieu }: { lieu: string }) {
   return (
-    <div className='mt-5'>
+    <div className="mt-3">
       <iframe
         title="SimpleDynamicMap"
-        width='100%'
-        height='450'
+        width="100%"
+        height="450"
         style={{ border: "0" }}
-        loading='lazy'
+        loading="lazy"
         allowFullScreen
         src={`https://www.google.com/maps/embed/v1/place?q=${
           lieu ? lieu : "Paris"
-        }&key=AIzaSyA6CfnfpHRrZutTt-EaGEcEmNsOhNGxbbo`}></iframe>
+        }&key=AIzaSyA6CfnfpHRrZutTt-EaGEcEmNsOhNGxbbo`}
+      ></iframe>
     </div>
   );
 }

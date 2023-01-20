@@ -7,14 +7,15 @@ import dateFormat from "dateformat";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import Isortie from "../types/ISortie";
 
-export const categorieToIcon = (categorie : string) => {
+export const categorieToIcon = (categorie: string) => {
   switch (categorie) {
     case "1":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
-          overlay={<Tooltip id={`tooltip-right`}>Cinéma</Tooltip>}>
+          overlay={<Tooltip id={`tooltip-right`}>Cinéma</Tooltip>}
+        >
           <span>🎬</span>
         </OverlayTrigger>
       );
@@ -22,9 +23,10 @@ export const categorieToIcon = (categorie : string) => {
     case "2":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
-          overlay={<Tooltip id={`tooltip-right`}>Restaurant / Dinner</Tooltip>}>
+          overlay={<Tooltip id={`tooltip-right`}>Restaurant / Dinner</Tooltip>}
+        >
           <span>🍴</span>
         </OverlayTrigger>
       );
@@ -32,11 +34,12 @@ export const categorieToIcon = (categorie : string) => {
     case "3":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>Bar / Sortie en ville</Tooltip>
-          }>
+          }
+        >
           <span>🍺</span>
         </OverlayTrigger>
       );
@@ -44,11 +47,12 @@ export const categorieToIcon = (categorie : string) => {
     case "4":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>Concert / Evènement musical</Tooltip>
-          }>
+          }
+        >
           <span>🎸</span>
         </OverlayTrigger>
       );
@@ -56,11 +60,12 @@ export const categorieToIcon = (categorie : string) => {
     case "5":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>Jeux / Tournoi / Casino</Tooltip>
-          }>
+          }
+        >
           <span>🎲</span>
         </OverlayTrigger>
       );
@@ -68,13 +73,14 @@ export const categorieToIcon = (categorie : string) => {
     case "6":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>
               Exposition / Musée / Vernissage / Evènement artistique
             </Tooltip>
-          }>
+          }
+        >
           <span>🎨</span>
         </OverlayTrigger>
       );
@@ -82,13 +88,14 @@ export const categorieToIcon = (categorie : string) => {
     case "7":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>
               Sport / Tournoi / Evenement sportif / Activité extérieure
             </Tooltip>
-          }>
+          }
+        >
           <span>🏀</span>
         </OverlayTrigger>
       );
@@ -96,13 +103,14 @@ export const categorieToIcon = (categorie : string) => {
     case "8":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>
               Plage / Piscine / Se relaxer au soleil
             </Tooltip>
-          }>
+          }
+        >
           <span>👓</span>
         </OverlayTrigger>
       );
@@ -110,14 +118,15 @@ export const categorieToIcon = (categorie : string) => {
     case "9":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>
               Activité en site naturel, parc, forêt / Picnic / Randonnée /
               Activité de plein air
             </Tooltip>
-          }>
+          }
+        >
           <span>🌳</span>
         </OverlayTrigger>
       );
@@ -125,11 +134,12 @@ export const categorieToIcon = (categorie : string) => {
     case "10":
       return (
         <OverlayTrigger
-          placement='right'
+          placement="right"
           delay={{ show: 250, hide: 400 }}
           overlay={
             <Tooltip id={`tooltip-right`}>Autre type d'activité</Tooltip>
-          }>
+          }
+        >
           <span>❔</span>
         </OverlayTrigger>
       );
@@ -140,11 +150,11 @@ export const categorieToIcon = (categorie : string) => {
   }
 };
 
-interface Iprops{
-  data : Isortie[]
+interface Iprops {
+  data: Isortie[];
 }
 
-export default function TableSorties({ data } : Iprops) {
+export default function TableSorties({ data }: Iprops) {
   const { width } = useWindowDimensions();
 
   const columns: Column<Isortie>[] = react.useMemo(() => {
@@ -153,7 +163,7 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Categorie",
           accessor: "categorie",
-          Cell: (props : any) => {
+          Cell: (props: any) => {
             return <span>{categorieToIcon(props.value)}</span>;
           },
         },
@@ -181,15 +191,16 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Prix",
           accessor: "price",
-          Cell: ({ value }: {value: any;}) =>
+          Cell: ({ value }: { value: any }) =>
             value > 0 ? (
               <span>{value}€</span>
             ) : (
               <span
                 style={{ color: "green", fontWeight: "bold" }}
-                data-bs-toggle='tooltip'
-                data-bs-placement='top'
-                title='Sortie gratuite.'>
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Sortie gratuite."
+              >
                 Gratuit
               </span>
             ),
@@ -197,10 +208,11 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Action",
           accessor: "_id",
-          Cell: ({ value }: {value: any;}) => (
+          Cell: ({ value }: { value: any }) => (
             <Link
-              className='btn btn-outline-primary btn-sm mx-1 ('
-              to={`/sortie/${value}`}>
+              className="btn btn-outline-primary btn-sm mx-1 ("
+              to={`/sortie/${value}`}
+            >
               Détails
             </Link>
           ),
@@ -208,12 +220,12 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Statut",
           accessor: "signalee",
-          Cell: (props: {value: any;}) => {
+          Cell: (props: { value: any }) => {
             return (
               <span>
                 {props.value ? (
                   <OverlayTrigger
-                    placement='left'
+                    placement="left"
                     delay={{ show: 250, hide: 400 }}
                     overlay={
                       <Tooltip id={`tooltip-right`}>
@@ -221,19 +233,21 @@ export default function TableSorties({ data } : Iprops) {
                         actuellement verrouillé jusqu'à vérification par un
                         administrateur.
                       </Tooltip>
-                    }>
+                    }
+                  >
                     <span>❌</span>
                   </OverlayTrigger>
                 ) : (
                   <OverlayTrigger
-                    placement='left'
+                    placement="left"
                     delay={{ show: 250, hide: 400 }}
                     overlay={
                       <Tooltip id={`tooltip-right`}>
                         Cet évènement n'a pas été signalé. Si vous constatez un
                         problème, merci de le signaler.
                       </Tooltip>
-                    }>
+                    }
+                  >
                     <span>✔</span>
                   </OverlayTrigger>
                 )}
@@ -247,7 +261,7 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Categorie",
           accessor: "categorie",
-          Cell: (props: {value: any;}) => {
+          Cell: (props: { value: any }) => {
             return <span>{categorieToIcon(props.value)}</span>;
           },
         },
@@ -262,7 +276,7 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Date",
           accessor: "date",
-          Cell: (props: {value: any;}) => {
+          Cell: (props: { value: any }) => {
             const custom_date = dateFormat(props.value, "dd/mm/yyyy HH:MM");
             return <span>{custom_date}</span>;
           },
@@ -276,10 +290,11 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Action",
           accessor: "_id",
-          Cell: ({ value }: {value: any;}) => (
+          Cell: ({ value }: { value: any }) => (
             <Link
-              className='btn btn-outline-primary btn-sm mx-1 ('
-              to={`/sortie/${value}`}>
+              className="btn btn-outline-primary btn-sm mx-1 ("
+              to={`/sortie/${value}`}
+            >
               Détails
             </Link>
           ),
@@ -290,7 +305,7 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "",
           accessor: "categorie",
-          Cell: (props: {value: any;}) => {
+          Cell: (props: { value: any }) => {
             return <span>{categorieToIcon(props.value)}</span>;
           },
         },
@@ -305,7 +320,7 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Date",
           accessor: "date",
-          Cell: (props: {value: any;}) => {
+          Cell: (props: { value: any }) => {
             const custom_date = dateFormat(props.value, "dd/mm/yy HH:MM");
             return <span>{custom_date}</span>;
           },
@@ -313,10 +328,11 @@ export default function TableSorties({ data } : Iprops) {
         {
           Header: "Action",
           accessor: "_id",
-          Cell: ({ value }: {value: any;}) => (
+          Cell: ({ value }: { value: any }) => (
             <Link
-              className='btn btn-outline-primary btn-sm mx-0 mx-md-1 ('
-              to={`/sortie/${value}`}>
+              className="btn btn-outline-primary btn-sm mx-0 mx-md-1 ("
+              to={`/sortie/${value}`}
+            >
               Détails
             </Link>
           ),
@@ -335,7 +351,14 @@ export default function TableSorties({ data } : Iprops) {
 
   // Render the UI for your table
   return (
-    <BTable striped bordered hover responsive size='sm' {...getTableProps()}>
+    <BTable
+      striped
+      bordered
+      hover
+      responsive
+      {...getTableProps()}
+      className="tableEvenements"
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -357,7 +380,11 @@ export default function TableSorties({ data } : Iprops) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return (
+                  <td className="align-middle" {...cell.getCellProps()}>
+                    {cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
           );

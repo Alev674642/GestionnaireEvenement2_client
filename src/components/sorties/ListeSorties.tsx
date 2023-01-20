@@ -35,8 +35,9 @@ export default function ListeSorties() {
     })
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
-        data.sort((a:Isortie, b:Isortie) => {
+        console.log("🚀 ~ file: ListeSorties.tsx:38 ~ .then ~ data", data);
+
+        data.sort((a: Isortie, b: Isortie) => {
           return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
         });
 
@@ -63,18 +64,12 @@ export default function ListeSorties() {
           return item.lieu2.includes(filtres.ville);
         });
 
-      if (
-        filtres.prixMax !== null &&
-        filtres.prixMax > -1
-      ) {
+      if (filtres.prixMax !== null && filtres.prixMax > -1) {
         sortiesFiltreesDynamiques = sortiesFiltreesDynamiques.filter(
           (item) => item.price <= filtres.prixMax
         );
       }
-      if ( 
-        filtres.categorie !== null &&
-        filtres.categorie !== "0"
-      ) {
+      if (filtres.categorie !== null && filtres.categorie !== "0") {
         sortiesFiltreesDynamiques = sortiesFiltreesDynamiques.filter(
           (item) => item.categorie === filtres.categorie
         );
@@ -85,38 +80,41 @@ export default function ListeSorties() {
 
   if (loading) {
     return (
-      <div className='bg-light '>
-        <CircularProgress className='my-5' />
+      <div className="bg-light ">
+        <CircularProgress className="my-5" />
       </div>
     );
   } else {
     return (
-      <div className='bg-light  pt-5'>
-        <div className='container'>
-          <h1 className='mb-5 fw-light'>Liste des sorties et évènements</h1>
+      <div className="bg-light  pt-5">
+        <div className="container">
+          <h1 className="mb-5 fw-light">Liste des sorties et évènements</h1>
           <br />
           <div>
             <FiltreSorties
               filtres={filtres}
-              setFiltres={setFiltres}></FiltreSorties>
+              setFiltres={setFiltres}
+            ></FiltreSorties>
           </div>
-          <div className='table-border-mystyle'>
+          <div className="table-border-mystyle mb-5">
             <TableSorties data={filtrerSortieDynamique()} />
           </div>
           <br />
-          <div className='container'>
+          <div className="container">
             <OverlayTrigger
-              placement='top'
+              placement="top"
               delay={{ show: 250, hide: 400 }}
               overlay={
                 <Tooltip id={`tooltip-right`}>
                   Cliquer pour créer un nouvel évènement.
                 </Tooltip>
-              }>
+              }
+            >
               <Link
-                type='button'
-                className='btn btn-primary mb-5'
-                to='/formulairesortieFormik'>
+                type="button"
+                className="btn btn-primary mb-5 btn-creation-sortie"
+                to="/formulairesortieFormik"
+              >
                 Créér un nouvel évènement
               </Link>
             </OverlayTrigger>

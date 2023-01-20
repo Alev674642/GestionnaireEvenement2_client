@@ -24,7 +24,7 @@ export default function NavBar() {
 				<Navbar.Brand className="fs-3 ms-3 " href="/">
 					<BsCalendarCheck className="fs-1 align-top" />
 				</Navbar.Brand>
-				<a className="navbar-brand fs-3 ms-3 " href="/">
+				<a className="navbar-brand fs-4 ms-3 " href="/">
 					<p
 						className="nav-logo-font-mystyle"
 						style={{ lineHeight: "0.5" }}
@@ -41,8 +41,7 @@ export default function NavBar() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav
-						className="me-auto mb-lg-0 mt-3 mt-lg-0
-          "
+						className="me-auto mb-lg-0 mt-3 mt-lg-0 "
 					>
 						<li className="nav-item mx-1 ">
 							<OverlayTrigger
@@ -55,7 +54,7 @@ export default function NavBar() {
 								}
 							>
 								<Link
-									className="nav-link active fw-bold nav-font-mystyle"
+									className="nav-link active  nav-font-mystyle"
 									aria-current="page"
 									to="/listeSorties"
 								>
@@ -64,7 +63,7 @@ export default function NavBar() {
 							</OverlayTrigger>
 						</li>
 						
-						<li className="nav-item active fw-bold mx-1">
+						<li className="nav-item active  mx-1">
 							<OverlayTrigger
 								placement="bottom"
 								delay={{ show: 250, hide: 400 }}
@@ -82,7 +81,7 @@ export default function NavBar() {
 								</Link>
 							</OverlayTrigger>
 						</li>
-						<li className="nav-item active fw-bold mx-1">
+						<li className="nav-item active  mx-1">
 							<OverlayTrigger
 								placement="bottom"
 								delay={{ show: 250, hide: 400 }}
