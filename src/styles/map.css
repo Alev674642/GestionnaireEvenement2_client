@@ -1,0 +1,17 @@
+.map_events {
+  max-height: 500px;
+  margin: 0 auto 1rem auto;
+  max-width: 500px;
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  border: 1px solid var(--secondary);
+}
+
+.evenement-tooltip {
+  padding: 0.5rem;
+}
+
+.button-navigate {
+  margin: 0.5rem 0 !important;
+}

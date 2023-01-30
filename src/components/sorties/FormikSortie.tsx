@@ -183,8 +183,8 @@ export default function FormikSortie(): JSX.Element {
   };
 
   return (
-    <div className="bg-light pt-5">
-      <h1 className="mb-5 fw-light">
+    <div className="bg-light pt-2">
+      <h1 className="mb-2 fw-light">
         {idsortie
           ? "Formulaire modification sortie"
           : "Formulaire création sortie"}
@@ -242,7 +242,7 @@ export default function FormikSortie(): JSX.Element {
       >
         {(props) => (
           <Form
-            className="my-5 border p-5 text-start container form-style"
+            className="my-3 border p-5 text-start container form-style"
             /*  onSubmit={handleSubmit} */
           >
             <div className="form-group mb-1">

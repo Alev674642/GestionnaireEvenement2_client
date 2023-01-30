@@ -7,6 +7,7 @@ import { AuthContext } from "../login/AuthProvider";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import { URL_SERVER } from "../utils/Utils";
 import Isortie from "../types/Isortie";
+import { Avatar, Divider } from "@mui/material";
 
 export default function SortieCard({ sortie }: { sortie: Isortie }) {
   const [message, setMessage] = useState("");
@@ -82,26 +83,29 @@ export default function SortieCard({ sortie }: { sortie: Isortie }) {
   return (
     <div className=" col align-self-center mb-5 ">
       <div className="card mx-auto my-1 w-80 border-secondary sortie-card-style">
-        <img
-          src={sortie.imageUrl ? sortie.imageUrl : ""}
-          alt="Evènement"
-          className="card-img-top"
-        ></img>
-
-        <div className="card-body py-5">
-          <h5 className="card-title pb-3 fs-1">{sortie.name}</h5>
-          <h5 className="card-title pb-3 fs-3 text-success">
-            {sortie.lieu} {sortie.lieu2}
-          </h5>
-          <h6 className="card-subtitle mb-2 text-muted fs-3">
+        <div className="card-body py-3">
+          <h5 className="card-title pb-1 fs-4">{sortie.name}</h5>
+          <h6 className="card-subtitle mb-2 pb-2 text-muted fs-6 fw-light">
             {dateFormat(sortie.date, "dd/mm/yyyy HH:MM")}
           </h6>
-          <p className="card-text fs-4">{sortie.description}</p>
-          <p className="card-text fs-4 fw-bold">
-            {sortie.price > 0 ? `${sortie.price} €` : "Gratuit"}
-          </p>
+          <Divider>
+            <h5 className="card-title fs-6 fw-light">
+              {sortie.lieu} {sortie.lieu2}
+            </h5>
+          </Divider>
+
+          <p className="card-text fs-6 mt-2">{sortie.description}</p>
+
+          <div className="card-text fs-5 fw-light sortie-card-price ">
+            <Avatar
+              sx={{ bgcolor: "orange", width: 56, height: 56 }}
+              className="sortie-card-price"
+            >
+              {sortie.price > 0 ? `${sortie.price} €` : "Gratuit"}
+            </Avatar>
+          </div>
           <p className="card-text fs-6 fw-light text-primary fst-italic">
-            - Evènement créé par {sortie.userPseudo} -
+            Evènement créé par {sortie.userPseudo}
           </p>
 
           <OverlayTrigger
@@ -167,6 +171,13 @@ export default function SortieCard({ sortie }: { sortie: Isortie }) {
               </button>
             </OverlayTrigger>
           )}
+          <div className="sortie-card-container">
+            <img
+              src={sortie.imageUrl ? sortie.imageUrl : ""}
+              alt="Evènement"
+              className="sortie-card-img"
+            ></img>
+          </div>
           <div>
             <SimpleMap lieu={sortie.lieu}></SimpleMap>
           </div>

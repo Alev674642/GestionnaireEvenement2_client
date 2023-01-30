@@ -8,8 +8,9 @@ import FiltreSorties from "./FiltreSorties";
 import { URL_SERVER } from "../utils/Utils";
 import CircularProgress from "../utils/CircularProgress";
 import Isortie from "../types/Isortie";
+import MapEvents from "../map/MapEvents";
 
-export default function ListeSorties() {
+export default function ListeEvenements() {
   const [sorties, setSorties] = useState<Isortie[]>([]);
   const { setSortiesContext } = useContext(sortieContext);
   const [loading, setLoading] = useState(true);
@@ -35,8 +36,6 @@ export default function ListeSorties() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("🚀 ~ file: ListeSorties.tsx:38 ~ .then ~ data", data);
-
         data.sort((a: Isortie, b: Isortie) => {
           return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
         });
@@ -86,11 +85,15 @@ export default function ListeSorties() {
     );
   } else {
     return (
-      <div className="bg-light  pt-5">
+      <div className="bg-light  pt-1">
         <div className="container">
-          <h1 className="mb-5 fw-light">Liste des sorties et évènements</h1>
-          <br />
+          <div className="mb-3 fs-1 fw-light ">Evènements</div>
+          <MapEvents evenements={sorties}></MapEvents>
           <div>
+            (Cliquez sur les icônes de la carte pour accèder à l'évènement
+            correspondant)
+          </div>
+          <div className="filter-div">
             <FiltreSorties
               filtres={filtres}
               setFiltres={setFiltres}

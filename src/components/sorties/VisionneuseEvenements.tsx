@@ -7,6 +7,7 @@ import { categorieToIcon } from "./TableSorties";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import dateFormat from "dateformat";
 import Isortie from "../types/Isortie";
+import SortieCard from "./SortieCard";
 
 export default function VisionneuseEvenements() {
   const [sorties, setSorties] = useState([]);
@@ -60,14 +61,14 @@ export default function VisionneuseEvenements() {
 
   const setArticleClass = (indexArticle: number) => {
     if (index === 0 && indexArticle === sorties.length - 1)
-      return "card my-5 col-6 visionneuseCard lastSlide";
+      return "my-2 col-6 visionneuseCard lastSlide";
     else if (index === sorties.length - 1 && indexArticle === 0)
-      return " card my-5 col-6 visionneuseCard nextSlide";
+      return " my-2 col-6 visionneuseCard nextSlide";
     else if (indexArticle === index)
-      return "card my-5 col-6 visionneuseCard activeSlide";
+      return "my-2 col-6 visionneuseCard activeSlide";
     else if (indexArticle === index - 1)
-      return "card my-5 col-6 visionneuseCard lastSlide";
-    else return "card my-5 col-6 visionneuseCard nextSlide";
+      return "my-2 col-6 visionneuseCard lastSlide";
+    else return "my-2 col-6 visionneuseCard nextSlide";
   };
 
   if (loading) {
@@ -81,8 +82,8 @@ export default function VisionneuseEvenements() {
     );
   } else {
     return (
-      <div className="mx-auto d-flex flex-column align-items-center">
-        <h1 className="mt-5 mb-2"> Visionneuse évènements</h1>
+      <div className="mx-auto d-flex flex-column align-items-center  pt-1">
+        <div className=" fs-1 fw-light ">Visionneuse d'évènements</div>
 
         <div className="section-center ">
           <button
@@ -101,6 +102,9 @@ export default function VisionneuseEvenements() {
                 className={setArticleClass(sortieIndex)}
                 style={{ maxWidth: "80%" }}
               >
+                <SortieCard sortie={sortie}></SortieCard>
+              </div>
+              /*
                 <h5 className="card-header">
                   <h1 style={{ display: "inline-block", fontSize: "normal" }}>
                     {sortie.name}
@@ -130,8 +134,7 @@ export default function VisionneuseEvenements() {
                 </div>
                 <div className="card-footer text-muted fs-3">
                   {sortie.lieu} {sortie.lieu2}
-                </div>
-              </div>
+                </div> */
             );
           })}
           <button

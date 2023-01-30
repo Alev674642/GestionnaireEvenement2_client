@@ -1,8 +1,9 @@
 import "./App.css";
+import "./styles/map.css";
 import NavBar from "./components/NavBar";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ListeSorties from "./components/sorties/ListeSorties";
+import ListeEvenements from "./components/sorties/ListeEvenements";
 import SortieProvider from "./components/sorties/SortieProvider";
 import UniqueSortie from "./components/sorties/UniqueSortie";
 import Login from "./components/login/login";
@@ -24,7 +25,7 @@ function App() {
                 path="/"
                 element={
                   <RequireAuth>
-                    <ListeSorties />
+                    <ListeEvenements />
                   </RequireAuth>
                 }
               ></Route>
@@ -43,7 +44,7 @@ function App() {
                 path="/listeSorties"
                 element={
                   <RequireAuth>
-                    <ListeSorties />
+                    <ListeEvenements />
                   </RequireAuth>
                 }
               ></Route>

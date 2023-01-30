@@ -22,16 +22,14 @@ export default function UniqueSortie() {
         setMessage(data);
       })
       .catch((error) => console.log(error));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className='bg-light pt-5 '>
-      <div className='container '>
-        <h1 className='mb-5 fw-light'>Détails de l'évènement</h1>
-
+    <div className="bg-light pt-5 ">
+      <div className="container ">
         {message && (
-          <div className='row'>
+          <div className="row">
             <SortieCard sortie={message}></SortieCard>
           </div>
         )}
